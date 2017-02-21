@@ -6,6 +6,43 @@ summerready = function () {
 	$service.call("SpeechService.init", {"appid" : "584776e6"}, false);
 };
 
+var Global_longTapEventHandler = null;
+$(function(){
+	$summer.byId('btn1').addEventListener('touchstart',function(){
+		Global_longTapEventHandler = setTimeout(function(){
+			$summer.byId('ret').innerHTML =  (new Date()).toLocaleString();
+	
+			summer.callService("SpeechService.openSpeechBackString", {
+				"callback" : "microPhoneCallback()",
+				"error" : "microPhoneCallback()"
+			}, false);
+		},2000);	
+	},false);
+	/*
+	$('#btn1').on('touchstart',function(){
+		//alert(123)
+		Global_longTapEventHandler = setTimeout(function(){
+			$summer.byId('ret').innerHTML = (new Date()).toLocaleString();
+	
+			summer.callService("SpeechService.openSpeechBackString", {
+				"callback" : "microPhoneCallback()",
+				"error" : "microPhoneCallback()"
+			}, false);
+		},2000);	
+	},false);
+*/
+	$summer.byId('btn1').addEventListener('touchmove',function(){
+		clearTimeout(Global_longTapEventHandler);
+	},false);
+
+	$summer.byId('btn1').addEventListener('touchend',function(){
+		clearTimeout(Global_longTapEventHandler);
+		
+		summer.callService("SpeechService.cancleSpeech", {}, false);
+	},false);
+})
+
+
 function speechToString(){
 	alert("开始语音识别...");
 	//语音识别

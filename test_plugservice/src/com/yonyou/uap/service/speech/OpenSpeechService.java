@@ -1,11 +1,15 @@
 package com.yonyou.uap.service.speech;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 //import com.iflytek.cloud.speech.RecognizerResult;
@@ -36,7 +40,7 @@ import com.yonyou.uap.um.runtime.RTHelper;
 public class OpenSpeechService {
 
 	private static SpeechRecognizer mIat;
-	
+	private static RecognizerDialog mIatDialog = null;
 	
 	
 	/* 对外服务接口
@@ -47,6 +51,14 @@ public class OpenSpeechService {
 
 		ApplicationInfo appInfo = null;
 		UMActivity act = args.getUMActivity();
+		if (Build.VERSION.SDK_INT >= 23) {
+          int checkCallPhonePermission = ContextCompat.checkSelfPermission(act, Manifest.permission.RECORD_AUDIO);
+          if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+              ActivityCompat.requestPermissions(act, new String[]{Manifest.permission.RECORD_AUDIO}, 0);
+          }
+		}
+			
+		
 		try {
 			appInfo = act.getPackageManager().getApplicationInfo(
 					act.getPackageName(), PackageManager.GET_META_DATA);
@@ -113,7 +125,7 @@ public class OpenSpeechService {
 		setParam(args);
 
 		//2、生成一个语音识别对话类实例
-		final RecognizerDialog mIatDialog = new RecognizerDialog(
+		mIatDialog = new RecognizerDialog(
 				args.getUMActivity(), new InitListener() {
 					@Override
 					public void onInit(int code) {
@@ -172,6 +184,17 @@ public class OpenSpeechService {
 		});
 	}
 
+	
+	public static void cancleSpeech(UMEventArgs args){
+		args.getUMActivity().runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				mIatDialog.dismiss();
+			}
+		});
+	}
 	/**
 	 * 语音识别参数设置
 	 * 
