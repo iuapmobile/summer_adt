@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<services default-package="com.yonyou.uap.um.runtime">
+    <service name="SpeechService.init" class="com.yonyou.uap.service.speech.OpenSpeechService" method="init"/>
+    <service name="SpeechService.openSpeechBackString" class="com.yonyou.uap.service.speech.OpenSpeechService" method="openSpeechBackString"/>
+    <service name="SpeechService.openStringBackSpeech" class="com.yonyou.uap.service.speech.OpenSpeechService" method="openStringBackSpeech"/>
+</services>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.yonyou.test_plugservice" android:hardwareAccelerated="true" android:versionCode="2" android:versionName="2">
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true" />
+
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+<uses-permission   android:name="android.permission.INTERNET"/><uses-permission   android:name="android.permission.WRITE_EXTERNAL_STORAGE"/><uses-permission   android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application android:hardwareAccelerated="true" android:icon="@drawable/app" android:label="@string/appname" android:name="com.yyuap.summer.application.YYSApplication">
+        <activity android:name="com.yyuap.summer.StartSummerActivity" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:screenOrientation="unspecified" android:label="@string/appname" android:launchMode="singleTop" android:theme="@android:style/Theme.Holo.Light.NoActionBar" android:windowSoftInputMode="stateHidden">
+			<intent-filter android:label="@string/appname">
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+        </activity>
+        <activity android:name="com.yyuap.summer.core.SummerActivity" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/appname" android:launchMode="singleInstance" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:windowSoftInputMode="adjustResize" />
+        <activity android:name="org.apache.cordova.CordovaActivity" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/appname" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.yyuap.summer.TestActivity" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/appname" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.yyuap.summer.control.imageselects.activity.ImageGridActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.DeviceDefault.NoActionBar"></activity>
+        <activity android:name="com.yyuap.summer.control.imageselects.activity.TestPicActivity" android:configChanges="orientation|keyboardHidden" android:screenOrientation="portrait" android:theme="@android:style/Theme.DeviceDefault.NoActionBar"/>
+        <activity android:name="com.yyuap.summer.control.imageselects.activity.PhotoActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.DeviceDefault.NoActionBar"/>
+        <activity android:name="com.yyuap.summer.control.imageselects.activity.AlbumActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.DeviceDefault.NoActionBar"></activity>
+        <activity android:name="com.yyuap.summer.control.imageselects.activity.ImageFile" android:theme="@android:style/Theme.DeviceDefault.NoActionBar"></activity>
+        <activity android:name="com.yyuap.summer.control.imageselects.activity.ShowAllPhoto" android:theme="@android:style/Theme.DeviceDefault.NoActionBar"></activity>
+        <activity android:name="com.yyuap.summer.control.imageselects.activity.GalleryActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar"></activity>
+        <activity android:name="com.yonyou.uap.um.activity.XFileSelector" android:theme="@android:style/Theme.DeviceDefault.NoActionBar"></activity>
+        <activity android:name="com.yonyou.uap.um.control.UMTwoDCodeActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+            <intent-filter>
+                <action android:name="com.yonyou.uap.um.control.UMTwoDCode" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.yonyou.uap.um.control.UMCameraActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+            <intent-filter>
+                <action android:name="com.yonyou.uap.um.control.UMCamera" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <!-- application configure metadata -->
+		<meta-data android:name="push_appid" android:value="" />
+		<meta-data android:name="key.alias" android:value="" />
+		<meta-data android:name="mapsdk" android:value="gaode" />
+		<meta-data android:name="key.alias.password" android:value="" />
+		<meta-data android:name="push_server_mang" android:value="" />
+		<meta-data android:name="com.amap.api.v2.apikey" android:value="" />
+		<meta-data android:name="JPUSH_APPKEY" android:value="" />
+		<meta-data android:name="push_companypwd" android:value="" />
+		<meta-data android:name="push_server_msg" android:value="" />
+		<meta-data android:name="WebContentsDebuggingEnabled" android:value="true" />
+		<meta-data android:name="mapkey" android:value="" />
+		<meta-data android:name="weixin_key_ios" android:value="" />
+		<meta-data android:name="key.store" android:value="" /> 
+		<meta-data android:name="speech_key_anroid_yl" android:value="appid=584776af" />
+		<meta-data android:name="speech_key_anroid" android:value="appid=58a105c0" />
+		<meta-data android:name="weixin_key_android" android:value="" />
+		<meta-data android:name="push_companyid" android:value="" />
+		<meta-data android:name="key.store.password" android:value="" />
+		<meta-data android:name="fullScreen" android:value="false" />
+		<meta-data android:name="statusBarAppearance" android:value="true" />
+		<meta-data android:name="statusBarStyle" android:value="dark" />
+		     <meta-data
+            android:name="IFLYTEK_APPKEY"
+            android:value="'58a105c0'" />
+
+    </application>
+
+</manifest>
